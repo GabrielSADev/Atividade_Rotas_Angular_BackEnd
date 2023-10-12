@@ -48,4 +48,10 @@ public class LivroService {
         return livro;
     }
 
+    public void excluirLivro(final long id){
+        final Livro livroBanco = this.livroRepository.findById(id).orElse(null);
+
+        this.livroRepository.delete(livroBanco);
+    }
+
 }

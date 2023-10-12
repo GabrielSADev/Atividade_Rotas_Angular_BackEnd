@@ -49,4 +49,10 @@ public class PessoaService {
         pessoa.setIdade(pessoaDTO.getIdade());
         return pessoa;
     }
+
+    public void excluirPessoa(final Long id){
+        final Pessoa pessoaBanco = this.pessoaRepository.findById(id).orElse(null);
+
+        this.pessoaRepository.delete(pessoaBanco);
+    }
 }

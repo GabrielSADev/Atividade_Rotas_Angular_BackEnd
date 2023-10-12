@@ -36,6 +36,17 @@ public class PessoaController {
         }
     }
 
+    @DeleteMapping
+    private ResponseEntity<HttpStatus> delete(@RequestParam("id") final Long id){
+        try {
+                this.pessoaService.excluirPessoa(id);
+                return ResponseEntity.ok(HttpStatus.OK);
+        }
+        catch (Exception e){
+                return ResponseEntity.badRequest().body(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping("erro")
     private ResponseEntity<List<PessoaDTO>> exemploErro(){
         return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

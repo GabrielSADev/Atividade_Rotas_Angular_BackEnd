@@ -36,6 +36,17 @@ public class CarroController {
         }
     }
 
+    @DeleteMapping
+    private ResponseEntity<HttpStatus> delete(@RequestParam("id") final Long id){
+        try {
+            this.carroService.excluirCarro(id);
+            return ResponseEntity.ok(HttpStatus.OK);
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping("erro")
     private ResponseEntity<List<CarroDTO>> exemploErro(){
         return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

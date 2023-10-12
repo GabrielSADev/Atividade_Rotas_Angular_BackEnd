@@ -45,4 +45,10 @@ public class CarroService {
         carro.setAno(carroDTO.getAno());
         return carro;
     }
+
+    public void excluirCarro(final Long id){
+        final Carro carroBanco = this.carroRepository.findById(id).orElse(null);
+
+        this.carroRepository.delete(carroBanco);
+    }
 }
